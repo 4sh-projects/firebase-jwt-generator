@@ -22,12 +22,6 @@ public class AppModule {
     }
 
     @Provides
-    @Named("restx.admin.password")
-    public String restxAdminPassword() {
-        return "6717";
-    }
-
-    @Provides
     public ConfigSupplier appConfigSupplier(ConfigLoader configLoader) {
         // Load settings.properties in fr.fsh.fjg package as a set of config entries
         return configLoader.fromResource("fr/fsh/fjg/settings");
