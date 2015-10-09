@@ -4,6 +4,7 @@ import com.firebase.security.token.TokenGenerator;
 import com.google.common.collect.ImmutableMap;
 import fr.fsh.fjg.AppSettings;
 import restx.annotations.POST;
+import restx.annotations.Param;
 import restx.annotations.RestxResource;
 import restx.factory.Component;
 import restx.security.PermitAll;
@@ -19,8 +20,8 @@ public class TokenResource {
 
     @POST("/tokens")
     @PermitAll
-    public String generateNewToken(){
+    public String generateNewToken(@Param(kind= Param.Kind.QUERY) String uid){
         TokenGenerator generator = new TokenGenerator(settings.firebaseSecret());
-        return generator.createToken(ImmutableMap.of("uid", "12345"));
+        return generator.createToken(ImmutableMap.of("uid", uid));
     }
 }
