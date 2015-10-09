@@ -16,9 +16,10 @@ import java.nio.file.Paths;
 
 @Module
 public class AppModule {
+
     @Provides
-    public SignatureKey signatureKey() {
-         return new SignatureKey("firebase-jwt-generator firebase-jwt-generator c77c84dc-7d41-4f67-bacc-0da0566e2a5d 8719151925803887515".getBytes(Charsets.UTF_8));
+    public SignatureKey signatureKey(AppSettings appSettings) {
+         return new SignatureKey(String.format("firebase-jwt-generator firebase-jwt-generator %s", appSettings.firebaseSecret()).getBytes(Charsets.UTF_8));
     }
 
     @Provides
