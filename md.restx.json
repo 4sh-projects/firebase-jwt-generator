@@ -31,6 +31,7 @@
         ],
         "test": [
             "io.restx:restx-specs-tests:${restx.version}",
+            "io.restx:restx-barbarywatch:${restx.version}",
             "junit:junit:4.11"
         ]
     }
